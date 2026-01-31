@@ -15,4 +15,3 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hi+I'm+Kaya+!;Welcome+to+my+GitHub+page!)](https://git.io/typing-svg)
-Check my Website: https://kayakayakaya.com/
