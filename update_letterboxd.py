@@ -27,7 +27,8 @@ def get_letterboxd_stats(username):
                 films_count = match.group(1)
 
     year_count = "0"
-    nav_this_year = soup.find('a', href=f"/{username}/films/diary/for/2026/")
+    # Letterboxd sets the current year link simply to /username/films/diary/
+    nav_this_year = soup.find('a', href=f"/{username}/films/diary/")
     if nav_this_year:
         val_span = nav_this_year.find('span', class_='value')
         if val_span:
@@ -57,7 +58,7 @@ def update_readme(films, year):
     before_part = content[:start_idx]
     after_part = content[end_idx:]
 
-    new_stats = f"\n🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year}\n"
+    new_stats = f"\n  🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year} | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/{LETTERBOXD_USERNAME})\n  "
     
     updated_content = before_part + new_stats + after_part
 
