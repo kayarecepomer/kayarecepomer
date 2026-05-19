@@ -27,8 +27,10 @@ def get_letterboxd_stats(username):
                 films_count = match.group(1)
 
     year_count = "0"
-    # Letterboxd sets the current year link simply to /username/films/diary/
     nav_this_year = soup.find('a', href=f"/{username}/films/diary/")
+    if not nav_this_year:
+        nav_this_year = soup.find('a', href=f"/{username}/films/diary/for/2026/")
+        
     if nav_this_year:
         val_span = nav_this_year.find('span', class_='value')
         if val_span:
@@ -49,7 +51,7 @@ def update_readme(films, year):
         content = f.read()
 
     if start_marker not in content or end_marker not in content:
-        print("Error: Markers not found in README.md")
+        print("Error: Target comment markers are missing from README.md. Please re-add them.")
         return
 
     start_idx = content.find(start_marker) + len(start_marker)
@@ -58,7 +60,7 @@ def update_readme(films, year):
     before_part = content[:start_idx]
     after_part = content[end_idx:]
 
-    new_stats = f"\n  🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year} | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/{LETTERBOXD_USERNAME})\n  "
+    new_stats = f"\n🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year} | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/{LETTERBOXD_USERNAME}) *(Updates Daily!)*\n"
     
     updated_content = before_part + new_stats + after_part
 
@@ -68,7 +70,7 @@ def update_readme(films, year):
 if __name__ == "__main__":
     try:
         f_count, y_count = get_letterboxd_stats(LETTERBOXD_USERNAME)
-        print(f"Stats found - Total: {f_count}, Year: {y_count}")
+        print(f"Extraction processing complete - Total: {f_count}, 2026 Diary: {y_count}")
         update_readme(f_count, y_count)
     except Exception as e:
-        print(f"Execution failed: {e}")
+        print(f"Execution run halted: {e}")
