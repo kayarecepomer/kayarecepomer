@@ -23,17 +23,3 @@
 
 🍿 **Total Films Watched:** 1,214 | 📅 **Films Watched in 2026:** 24 | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/kayarecepomer) *(Updates Daily!)*
 <br/>
-
-
-
-  ### 🐍 Contribution Board
-  <p align="left" style="margin: 0;">
-    <img src="https://raw.githubusercontent.com/kayarecepomer/kayarecepomer/output/github-contribution-grid-snake.svg" alt="Contribution Snake" width="600"/>
-  </p>
-
-</div>
-<br/>
-
-<p align="left">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dark" alt="Dynamic Tech Quote" />
-</p>
