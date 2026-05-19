@@ -28,46 +28,53 @@ def get_letterboxd_stats(username):
                 films_count = match.group(1)
 
     year_count = "0"
-    year_match = re.search(r'href="/' + username + r'/films/diary/for/2026/".*?>([\d,]+)</a>', html_str, re.IGNORECASE)
-    if not year_match:
-        year_match = re.search(r'for/2026/.*?<span class="value">([\d,]+)</span>', html_str, re.IGNORECASE)
-    if not year_count or year_count == "0":
-        nav_year = soup.find('a', href=f"/{username}/films/diary/")
-        if nav_year:
-            val_span = nav_year.find('span', class_='value')
+    # Scrape the specific layout profile stat badges directly from the right-hand panel
+    stat_links = soup.find_all('a', href=re.compile(rf'/{username}/films/diary/for/\d+/'))
+    for link in stat_links:
+        if "/2026/" in link.get('href', ''):
+            val_span = link.find('span', class_='value')
+            if val_span:
+                year_count = val_span.text.strip()
+                break
+                
+    if year_count == "0":
+        diary_link = soup.find('a', href=f"/{username}/films/diary/")
+        if diary_link:
+            val_span = diary_link.find('span', class_='value')
             if val_span:
                 year_count = val_span.text.strip()
 
-    if year_match:
-        year_count = year_match.group(1)
-            
     return films_count, year_count
 
 def update_readme(films, year):
+    start_tag = ""
+    end_tag = ""
+    
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    pattern = r".*?"
-    
-    new_stats_block = (
-        f"\n"
-        f"🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year} | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/{LETTERBOXD_USERNAME}) *(Updates Daily!)*\n"
-        f""
-    )
-
-    if not re.search(pattern, content, re.DOTALL):
-        print("Error: Target comments missing from README.md template file.")
+    if start_tag not in content or end_tag not in content:
+        print("Error: Tracking comments are completely missing from the target file.")
         return
 
-    updated_content = re.sub(pattern, new_stats_block, content, flags=re.DOTALL)
+    # Split and rebuild without matching variants
+    parts_before = content.split(start_tag)
+    parts_after = parts_before[1].split(end_tag)
+    
+    clean_prefix = parts_before[0] + start_tag
+    clean_suffix = end_tag + parts_after[1]
+    
+    new_metrics = f"\n🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year} | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/{LETTERBOXD_USERNAME}) *(Updates Daily!)*\n"
+    
+    final_output = clean_prefix + new_metrics + clean_suffix
 
     with open("README.md", "w", encoding="utf-8") as f:
-        f.write(updated_content)
+        f.write(final_output)
 
 if __name__ == "__main__":
     try:
         f_count, y_count = get_letterboxd_stats(LETTERBOXD_USERNAME)
-        print(f"Scrape verified - Total Watched: {f_count}, Year Active: {y_count}")
+        print(f"Scraper verified -> Total Watched: {f_count}, 2026 Diary: {y_count}")
         update_readme(f_count, y_count)
     except Exception as e:
-        print(f"System error: {e}")
+        print(f"Workflow execution error: {e}")
