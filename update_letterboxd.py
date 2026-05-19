@@ -57,20 +57,27 @@ def update_readme(films, year):
         print("Error: Tracking comments are completely missing from the target file.")
         return
 
-    # Split and rebuild without matching variants
     parts_before = content.split(start_tag)
     parts_after = parts_before[1].split(end_tag)
     
     clean_prefix = parts_before[0] + start_tag
     clean_suffix = end_tag + parts_after[1]
     
-    new_metrics = f"\n🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year} | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/{LETTERBOXD_USERNAME}) *(Updates Daily!)*\n"
+    # Modern minimalist single-line UI markup string wrapper
+    new_metrics = (
+        f"\n<p align=\"left\" style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 14px; margin: 0; color: #8b949e;\">\n"
+        f"  <span>TOTAL FILMS</span> &nbsp;<strong style=\"color: #ffffff;\">{films}</strong> &nbsp;&nbsp;<span style=\"color: #30363d;\">|</span>&nbsp;&nbsp; \n"
+        f"  <span>WATCHED IN 2026</span> &nbsp;<strong style=\"color: #ffffff;\">{year}</strong> &nbsp;&nbsp;<span style=\"color: #30363d;\">|</span>&nbsp;&nbsp; \n"
+        f"  <a href=\"https://letterboxd.com/kayarecepomer\" target=\"_blank\" style=\"color: #c9d1d9; text-decoration: none; font-weight: 500;\">LETTERBOXD PROFILE ↗</a> \n"
+        f"  &nbsp;&nbsp;<em style=\"font-size: 12px; color: #484f58;\">(auto-sync daily)</em>\n"
+        f"</p>\n"
+    )
     
     final_output = clean_prefix + new_metrics + clean_suffix
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(final_output)
-
+        
 if __name__ == "__main__":
     try:
         f_count, y_count = get_letterboxd_stats(LETTERBOXD_USERNAME)
