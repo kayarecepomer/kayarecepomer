@@ -41,26 +41,33 @@ def get_letterboxd_stats(username):
     return films_count, year_count
 
 def update_readme(films, year):
+    start_marker = ""
+    end_marker = ""
+    
     with open("README.md", "r", encoding="utf-8") as f:
-        readme = f.read()
+        content = f.read()
 
-    stats_block = (
-        f"\n"
-        f"🍿 **Total Films Watched:** {films} | "
-        f"📅 **Films Watched in 2026:** {year}\n"
-        f""
-    )
+    if start_marker not in content or end_marker not in content:
+        print("Error: Markers not found in README.md")
+        return
 
-    pattern = r".*?"
-    updated_readme = re.sub(pattern, stats_block, readme, flags=re.DOTALL)
+    start_idx = content.find(start_marker) + len(start_marker)
+    end_idx = content.find(end_marker)
+
+    before_part = content[:start_idx]
+    after_part = content[end_idx:]
+
+    new_stats = f"\n🍿 **Total Films Watched:** {films} | 📅 **Films Watched in 2026:** {year}\n"
+    
+    updated_content = before_part + new_stats + after_part
 
     with open("README.md", "w", encoding="utf-8") as f:
-        f.write(updated_readme)
+        f.write(updated_content)
 
 if __name__ == "__main__":
     try:
         f_count, y_count = get_letterboxd_stats(LETTERBOXD_USERNAME)
-        print(f"Successfully retrieved stats - Total: {f_count}, 2026: {y_count}")
+        print(f"Stats found - Total: {f_count}, Year: {y_count}")
         update_readme(f_count, y_count)
     except Exception as e:
-        print(f"Error updating Letterboxd stats: {e}")
+        print(f"Execution failed: {e}")
