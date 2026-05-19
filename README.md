@@ -15,3 +15,6 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hi+I'm+Kaya+!;Welcome+to+my+GitHub+page!)](https://git.io/typing-svg)
+
+<!-- LETTERBOXD-STATS:START -->
+   <!-- LETTERBOXD-STATS:END -->
