@@ -1,4 +1,4 @@
-## Heyy 👋
+
 
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hi+I'm+Kaya+!;Welcome+to+my+GitHub+page!)](https://git.io/typing-svg)
 
@@ -20,6 +20,37 @@
   </p>
 
   <br/>
+
+I'm Kaya, a third-year Computer Science student at the University of Toronto 
+specializing in Artificial Intelligence and a President's Scholar of Excellence.
+
+Currently working as an **AI Researcher at [The Matter Lab](https://www.matter.toronto.edu/)** (under Prof. Alan 
+Aspuru-Guzik) and,
+
+as an **ML Research Assistant at [CECCS](https://sustainability.utoronto.ca/research/), UofT**.
+
+Previously:
+- **Software Engineer Intern @ CIBC** — built large-scale data pipelines with 
+Python, Apache Spark, and Databricks, and deployed MLOps workflows on Azure
+- **Undergraduate Research Assistant/Software Engineer @ [Acceleration Consortium](https://acceleration.utoronto.ca/)** — engineered 
+3D computer vision pipelines for Self-Driving Labs under Prof. Alan Aspuru-Guzik, 
+mentored by Sterling Baird
+- **Data Analyst Student @ TELUS Digital** — SQL and PowerBI dashboards for 
+business performance tracking
+
+I build things that work end-to-end. AI agents, backend systems, computer vision 
+pipelines, self-hosted infrastructure — I like owning the full stack from idea to 
+deployed system.
+
+- 🌐 Personal site: [kayakayakaya.com](https://kayakayakaya.com)
+- 🔭 Check out my self-hosted NAS and private cloud project: 
+[NFS_to_Cloud](https://github.com/kayarecepomer/NFS_to_Cloud)
+- 🤖 Currently building autonomous LLM agent workflows for scientific discovery
+- 🌱 Always exploring the intersection of AI systems and real-world engineering
+- 🎬 Cinema Studies enthusiast and TIFF regular
+- 📫 Reach me at: kaya.kaya@mail.utoronto.ca
+
+
 
 <!-- LETTERBOXD_START -->
 🍿 **Total Films Watched:** 1,217 | 📅 **Films Watched in 2026:** 26 | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/kayarecepomer) *(Updates Daily!)*
