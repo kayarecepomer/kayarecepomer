@@ -28,27 +28,18 @@ def get_letterboxd_stats(username):
                 films_count = match.group(1)
 
     year_count = "0"
-    # Scrape the specific layout profile stat badges directly from the right-hand panel
-    stat_links = soup.find_all('a', href=re.compile(rf'/{username}/films/diary/for/\d+/'))
-    for link in stat_links:
-        if "/2026/" in link.get('href', ''):
-            val_span = link.find('span', class_='value')
-            if val_span:
-                year_count = val_span.text.strip()
-                break
-                
-    if year_count == "0":
-        diary_link = soup.find('a', href=f"/{username}/films/diary/")
-        if diary_link:
-            val_span = diary_link.find('span', class_='value')
-            if val_span:
-                year_count = val_span.text.strip()
+    current_year = "2026"
+    year_link = soup.find('a', href=f"/{username}/diary/for/{current_year}/")
+    if year_link:
+        val_span = year_link.find('span', class_='value')
+        if val_span:
+            year_count = val_span.text.strip()
 
     return films_count, year_count
 
 def update_readme(films, year):
-    start_tag = ""
-    end_tag = ""
+    start_tag = "<!-- LETTERBOXD_START -->"
+    end_tag = "<!-- LETTERBOXD_END -->"
     
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()

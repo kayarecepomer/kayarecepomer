@@ -21,5 +21,7 @@
 
   <br/>
 
-🍿 **Total Films Watched:** 1,216 | 📅 **Films Watched in 2026:** 25 | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/kayarecepomer) *(Updates Daily!)*
+<!-- LETTERBOXD_START -->
+🍿 **Total Films Watched:** 1,217 | 📅 **Films Watched in 2026:** 26 | 🎬 **Profile:** [Letterboxd](https://letterboxd.com/kayarecepomer) *(Updates Daily!)*
+<!-- LETTERBOXD_END -->
 <br/>
