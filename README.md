@@ -33,8 +33,7 @@ Previously:
 - **Software Engineer Intern @ CIBC** — built large-scale data pipelines with 
 Python, Apache Spark, and Databricks, and deployed MLOps workflows on Azure
 - **Undergraduate Research Assistant/Software Engineer @ [Acceleration Consortium](https://acceleration.utoronto.ca/)** — engineered 
-3D computer vision pipelines for Self-Driving Labs under Prof. Alan Aspuru-Guzik, 
-mentored by Sterling Baird
+3D computer vision pipelines for Self-Driving Labs under Prof. Alan Aspuru-Guzik
 - **Data Analyst Student @ TELUS Digital** — SQL and PowerBI dashboards for 
 business performance tracking
 
